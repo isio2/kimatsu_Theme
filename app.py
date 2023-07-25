@@ -63,6 +63,16 @@ def register_exe():
 
     return render_template('register_complete.html')
 
+#検索
+@app.route("/search")
+def search():
+    return render_template("search.html")
+
+@app.route("/search_result", methods=["POST"])
+def search_result():
+    title = request.form.get("title")
+    book_list = db.search_book(title)
+    return render_template("search_result.html", books=book_list)
 
 #一覧
 @app.route('/list')
@@ -82,7 +92,19 @@ def delete_exe():
 
     db.delete_book(id)
 
-    return render_template('success.html')
+    return render_template('succsess.html')
+
+#貸出
+@app.route('/lend', methods=['GET'])
+def lend():
+    return render_template('lend.html')
+
+@app.route('/lend_exe', methods=['POST'])
+def lend_exe():
+    title = request.form.get('title')
+    db.insert_lend(title)
+
+    return render_template('lend_complete.html')
 
 
 #ログアウト

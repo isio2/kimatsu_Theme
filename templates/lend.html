@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,12 +10,11 @@
     <title>Document</title>
 </head>
 <body class="back">
-    <h1>削除画面</h1>
-	<form action="{{url_for('delete_exe')}}" method="post">
-	id:<input type="text" name="id"><br>
-		<input type="submit" value="削除"><br>
+    <h1>登録</h1>
+    <form action="{{url_for('lend_exe')}}" method="post">
+    タイトル：<input type="text" name="title"><br>
+    <button type="submit">登録</button>
     </form>
-    <a class="nav-link" href="{{url_for('vip')}}">機能一覧に戻る</a>
-
+    <a class="nav-link" href="{{url_for('geast')}}">機能一覧に戻る</a>
 </body>
 </html>

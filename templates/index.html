@@ -3,10 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet"
+  href="{{url_for('static',
+  filename='css/index.css')}}"/>
+  <link
+      rel="icon"
+      href="{{url_for('static', filename='favicon/favicon.ico')}}"
+    />
   <title>Document</title>
 </head>
-<body>
-  <h3>ログイン画面</h3>
+<body class="back">
+  <div>
+  <h2>ログイン画面</h2>
   {% if error != null %}
     <p style="color:red">{{error}}</p>
   {% endif %}
@@ -16,8 +24,9 @@
   <form action="{{url_for('login')}}" method="post">
     ユーザ名:<input type="text" name="username" value="{{data.user_name if data is defined else ''}}"><br>
     パスワード：<input type="password" name="password" value="{{data.password if data is defined else ''}}"><br>
-    <button type="submit">ログイン</button>
+    <button type="submit">ログイン</button><br>
   </form>
   <a href="{{url_for('staff')}}">新規登録</a>
+  </div>
 </body>
 </html>

@@ -116,6 +116,18 @@ def insert_book(title, author, publisher, pages):
     cursor.close()
     connection.close()
 
+# 図書貸出
+def insert_lend(title):
+    connection = get_connection()
+    cursor = connection.cursor()
+    sql ="UPDATE books_sample SET title = ?, author = ?, publisher = ?, pages = ?, WHERE id = ?"
+    sql = "INSERT INTO lend_sample VALUES (default,%s)"
+
+    cursor.execute(sql,(title))
+
+    connection.commit()
+    cursor.close()
+    connection.close()
 
 # 図書削除
 def delete_book(id):
@@ -141,6 +153,18 @@ def edit_book(title, author, publisher, pages):
     connection.commit()
     cursor.close()
     connection.close()
+
+#図書検索
+def search_book(title):
+    connection = get_connection()
+    cursor = connection.cursor()
+    sql = "SELECT * FROM books_sample WHERE title LIKE %s"
+    title2 = "%" + title + "%"
+    cursor.execute(sql, (title2,))
+    rows = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return rows
 
 
 #利用者登録

@@ -3,9 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+      rel="icon"
+      href="{{url_for('static', filename='favicon/favicon.ico')}}"
+    />
   <title>Document</title>
 </head>
-<body>
+<body class="back">
   <h3>ユーザ登録画面</h3>
   {% if error != null %}
     <p style="color:red">{{error}}</p>
