@@ -58,8 +58,9 @@ def register_exe():
     author = request.form.get('author')
     publisher = request.form.get('publisher')
     pages = request.form.get('pages')
+    explanation = request.form.get('explanation')
 
-    db.insert_book(title, author, publisher, pages)
+    db.insert_book(title, author, publisher, pages,explanation)
 
     return render_template('register_complete.html')
 
@@ -80,6 +81,17 @@ def list():
     list = db.select_all_books()
     return render_template('list.html', books = list)
 
+#利用者一覧
+@app.route('/gt_list')
+def gt_list():
+    gt_list = db.select_books()
+    return render_template('gt_list.html', books = gt_list)
+
+#説明
+@app.route('/explanation')
+def explanation():
+    list = db.explanation_books()
+    return render_template('explanation.html', explanations = list)
 
 # 削除
 @app.route('/delete')
@@ -93,6 +105,28 @@ def delete_exe():
     db.delete_book(id)
 
     return render_template('succsess.html')
+
+#編集
+@app.route('/edit')
+def edit():
+    id = request.args.get('id')
+    return render_template('edit.html' ,id=id)
+
+@app.route('/edit_exe', methods=['POST'])
+def edit_exe():
+
+    id = request.form.get('id')
+    title = request.form.get('title')
+    author = request.form.get('author')
+    publisher = request.form.get('publisher')
+    pages = request.form.get('pages')
+    explanation = request.form.get('explanation')
+
+    print(id,title, author, publisher, pages, explanation)
+
+    db.edit_book(id,title, author, publisher, pages, explanation)
+
+    return render_template('edit_complete.html')
 
 #貸出
 @app.route('/lend', methods=['GET'])

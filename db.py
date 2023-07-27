@@ -94,7 +94,35 @@ def select_all_books():
     connection = get_connection()
     cursor = connection.cursor()
 
-    sql = 'SELECT title, author, publisher, pages FROM books_sample'
+    sql = 'SELECT id,title, author, publisher, pages FROM books_sample'
+
+    cursor.execute(sql)
+    rows = cursor.fetchall()
+
+    cursor.close()
+    connection.close()
+    return rows
+
+# 利用者一覧
+def select_books():
+    connection = get_connection()
+    cursor = connection.cursor()
+
+    sql = 'SELECT id, title, author, publisher, pages FROM books_sample'
+
+    cursor.execute(sql)
+    rows = cursor.fetchall()
+
+    cursor.close()
+    connection.close()
+    return rows
+
+# 説明
+def explanation_books():
+    connection = get_connection()
+    cursor = connection.cursor()
+
+    sql = 'SELECT explanation FROM books_sample'
 
     cursor.execute(sql)
     rows = cursor.fetchall()
@@ -105,18 +133,18 @@ def select_all_books():
 
 
 # 図書登録
-def insert_book(title, author, publisher, pages):
+def insert_book(title, author, publisher, pages, explanation):
     connection = get_connection()
     cursor = connection.cursor()
-    sql = "INSERT INTO books_sample VALUES (default,%s, %s, %s, %s)"
+    sql = "INSERT INTO books_sample VALUES (default,%s, %s, %s, %s, %s)"
 
-    cursor.execute(sql,(title, author, publisher, pages))
+    cursor.execute(sql,(title, author, publisher, pages, explanation))
 
     connection.commit()
     cursor.close()
     connection.close()
 
-# 図書貸出
+# 図書貸出←出来てない
 def insert_lend(title):
     connection = get_connection()
     cursor = connection.cursor()
@@ -141,14 +169,14 @@ def delete_book(id):
     cursor.close()
     connection.close()
 
-
 # 図書編集
-def edit_book(title, author, publisher, pages):
+def edit_book(id,title, author, publisher, pages, explanation):
     connection = get_connection()
     cursor = connection.cursor()
-    sql ="UPDATE books_sample SET title = ?, author = ?, publisher = ?, pages = ?, WHERE id = ?";
 
-    cursor.execute(sql,(title,author, publisher,pages))
+    sql ="UPDATE books_sample SET title = %s, author = %s, publisher = %s, pages = %s,explanation = %s WHERE id = %s"
+
+    cursor.execute(sql,(title,author, publisher,pages, explanation,id))
 
     connection.commit()
     cursor.close()

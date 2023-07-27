@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet"
+  href="{{url_for('static',
+  filename='css/index.css')}}"/>
   <link
       rel="icon"
       href="{{url_for('static', filename='favicon/favicon.ico')}}"
@@ -10,6 +13,7 @@
   <title>Document</title>
 </head>
 <body class="back">
+  <div>
   <h3>ユーザ登録画面</h3>
   {% if error != null %}
     <p style="color:red">{{error}}</p>
@@ -19,7 +23,7 @@
     パスワード：<input type="password" name="password" value="{{password}}"><br>
     <button type="submit">登録</button>
   </form>
-  <a class="nav-link" href="{{url_for('index')}}">ログイン画面に戻る</a>
-
+  <a class="nav-link" href="{{url_for('index')}}">戻る</a>
+<div>
 </body>
 </html>

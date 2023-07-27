@@ -31,13 +31,11 @@
             <td>{{ book[2] }}</td>
             <td>{{ book[3] }}</td>
             <td>{{ book[4] }}</td>
-            <td><a href="{{url_for('edit', id=book[0])}}">編集</a></td>
         </tr>
         {% endfor %}
     </tbody>
     </table>
-    <a href="delete">削除に飛ぶ</a>
-    <a class="nav-link" href="vip">戻る</a>
+    <a class="nav-link" href="javascript:history.go(-1)">戻る</a>
     </div>
 </body>
 </html>

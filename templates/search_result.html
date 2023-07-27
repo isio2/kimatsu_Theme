@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+    href="{{url_for('static',
+    filename='css/index.css')}}"/>
     <link
     rel="icon"
     href="{{url_for('static', filename='favicon/favicon.ico')}}"
@@ -10,8 +13,9 @@
     <title>Document</title>
 </head>
 <body class="back">
-    <h1>一覧</h1>
-<table border>
+    <div>
+    <h1>検索結果</h1>
+<table border="1">
     <thead>
         <tr>
             <th>タイトル</th>
@@ -23,14 +27,15 @@
     <tbody>
         {% for book in books %}
         <tr>
-            <td>{{ book[1] }}</td>
+            <td><a href="explanation">{{ book[1] }}</a></td>
             <td>{{ book[2] }}</td>
             <td>{{ book[3] }}</td>
             <td>{{ book[4] }}</td>
         </tr>
         {% endfor %}
     </tbody>
-    <a href="javascript:history.go(-2)">機能一覧に戻る</a>
-
+    </table>
+    <a class="nav-link" href="javascript:history.go(-2)">戻る</a>
+</div>
 </body>
 </html>

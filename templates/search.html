@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet"
+    href="{{url_for('static',
+    filename='css/index.css')}}"/>
     <link
     rel="icon"
     href="{{url_for('static', filename='favicon/favicon.ico')}}"
@@ -10,10 +13,13 @@
     <title>本の検索</title>
 </head>
 <body class="back">
+    <div>
     <h3>検索したい本のタイトルを入力してね</h3>
     <form action="{{url_for('search_result')}}" method="post">
     タイトル:<input type="text" name="title" value="{{title}}" /><br />
     <button type="submit">検索</button>
-    </form>
+    <a class="nav-link" href="javascript:history.go(-1)">戻る</a>
+    </div>
+</form>
 </body>
 </html>

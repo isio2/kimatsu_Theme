@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+    href="{{url_for('static',
+    filename='css/index.css')}}"/>
     <link
     rel="icon"
     href="{{url_for('static', filename='favicon/favicon.ico')}}"
@@ -15,6 +18,9 @@
     タイトル：<input type="text" name="title"><br>
     <button type="submit">登録</button>
     </form>
-    <a class="nav-link" href="{{url_for('geast')}}">機能一覧に戻る</a>
+    <div>
+        <a class="nav-link" href="javascript:history.go(-1)">戻る</a>
+
+    </div>
 </body>
 </html>

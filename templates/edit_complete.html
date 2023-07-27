@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+    href="{{url_for('static',
+    filename='css/index.css')}}"/>
     <link
     rel="icon"
     href="{{url_for('static', filename='favicon/favicon.ico')}}"
@@ -10,7 +13,10 @@
     <title>Document</title>
 </head>
 <body class="back">
+    <div>
     <h3>編集成功</h3>
-    <a class="nav-link" href="{{url_for('vip')}}">戻る</a>
+    <a class="nav-link" href="vip">戻る</a>
+
+</div>
 </body>
 </html>

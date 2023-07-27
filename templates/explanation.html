@@ -13,13 +13,23 @@
     <title>Document</title>
 </head>
 <body class="back">
-  <div>
-    <h3>管理者ページ</h3>
-  <a class="nav-link" href="{{url_for('list')}}">一覧</a>
-  <a class="nav-link" href="{{url_for('search')}}">検索</a>
-  <a class="nav-link" href="{{url_for('register')}}">登録</a>
-  <a class="nav-link" href="{{url_for('delete')}}">削除</a>
-  <a href="{{url_for('logout')}}">ログアウトしますか？</a>
-</div>
+    <div>
+    <h1>説明</h1>
+<table border="1">
+    <head>
+        <tr>
+            <th>説明</th>
+        </tr>
+    </head>
+    <lbody>
+        {% for explanation in explanations %}
+        <tr>
+            <td>{{ explanation[0] }}</td>
+        </tr>
+        {% endfor %}
+    </lbody>
+</table>
+    <a href="javascript:history.go(-2)">戻る</a>
+    </div>
 </body>
 </html>
