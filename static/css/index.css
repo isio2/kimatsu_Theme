@@ -8,6 +8,9 @@ div{
     text-align: center;
     margin: 100px 0 0 0px; /* 完全に中央に配置するため、上・左の margin を負の数に設定 */
 }
+.color{
+background-color: red;
+}
 
 .nav-link {
 	display: block;
